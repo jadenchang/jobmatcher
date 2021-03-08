@@ -38,10 +38,10 @@ public class JobMatcherServiceImpl implements JobMatcherService {
 
     /**
      * the match criteria are enlisted below. if matched, get a core
-     * jobTitle: Jobs <->  skill: Workers
-     * requiredCertificates: Jobs <->  certificates: Workers
-     * location: Jobs <->  jobSearchAddress: Workers   [ONLY keep the jobs which has acceptable distance.]
-     * driverLicenseRequired:Jobs <-> hasDriversLicense: Workers [ONLY keep the jobs which match the driver license.]
+     * a.) jobTitle: Jobs <->  skill: Workers
+     * b.) requiredCertificates: Jobs <->  certificates: Workers
+     * c.) location: Jobs <->  jobSearchAddress: Workers   [ONLY keep the jobs which has acceptable distance.]
+     * d.) driverLicenseRequired:Jobs <-> hasDriversLicense: Workers [ONLY keep the jobs which match the driver license.]
      * if driverLicenseRequired of job is true, then the worker must comply with the condition.
      * @param worker
      * @param jobs

@@ -2,7 +2,7 @@ package me.jaden.swipejobs.geo;
 
 public class GeoHelper {
 
-    private static double EARTH_RADIUS = 6378.137;
+    private static final double EARTH_RADIUS = 6378.137;
 
     /**
      * calculate the accurate distance between to locations.

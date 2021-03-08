@@ -12,7 +12,7 @@ public interface HttpService {
         POST
     }
 
-    String getResponseBody(java.net.URI uri, Method method) throws Exception;
+    String getResponseBody(java.net.URI uri, Method method) throws DataSourceNotReadyException;
 
     String getJsonStringByURI(Supplier<URI> s) throws DataSourceNotReadyException;
 }

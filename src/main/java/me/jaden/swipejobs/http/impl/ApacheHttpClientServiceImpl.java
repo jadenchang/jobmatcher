@@ -2,7 +2,6 @@ package me.jaden.swipejobs.http.impl;
 
 import me.jaden.swipejobs.exception.DataSourceNotReadyException;
 import me.jaden.swipejobs.http.HttpService;
-import me.jaden.swipejobs.po.HttpProperties;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -21,8 +20,6 @@ import java.util.function.Supplier;
 public class ApacheHttpClientServiceImpl implements HttpService {
 
     @Autowired
-    HttpProperties httpProperties;
-    @Autowired
     HttpService  httpService;
 
     @Override
@@ -31,26 +28,25 @@ public class ApacheHttpClientServiceImpl implements HttpService {
         try {
             retVal = httpService.getResponseBody(s.get(), HttpService.Method.GET);
         }catch(Exception e){
-            throw new DataSourceNotReadyException();
+            throw new DataSourceNotReadyException(e.getMessage());
         }
         return retVal;
     }
 
     @Override
-    public String getResponseBody(java.net.URI uri, Method method) throws Exception {
-        HttpClient client = initClient(uri, Method.GET);
-        HttpResponse httpResponse = client.execute(new HttpGet(uri));
-
+    public String getResponseBody(java.net.URI uri, Method method) throws DataSourceNotReadyException {
         String s = null;
         try {
+            HttpClient client = initClient(uri, Method.GET);
+            HttpResponse httpResponse = client.execute(new HttpGet(uri));
             HttpEntity entity = httpResponse.getEntity();
             if (entity != null) {
                 s = EntityUtils.toString(entity);
             }
         } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            throw new DataSourceNotReadyException(e.getMessage());
+        } catch (IOException ioe) {
+            throw new DataSourceNotReadyException(ioe.getMessage());
         }
         return s;
     }

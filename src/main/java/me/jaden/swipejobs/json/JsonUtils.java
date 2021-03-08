@@ -1,9 +1,7 @@
 package me.jaden.swipejobs.json;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.jaden.swipejobs.po.Worker;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
