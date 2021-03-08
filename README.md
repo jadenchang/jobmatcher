@@ -108,3 +108,61 @@ The below items are what I can improve in the future.
 - Use NTL(Natural Language Processing) to match the job description, skills, certification better.
 - Provide more error handling.
 - Provide UI for query.
+
+
+##Appendix
+The Best 3 Jobs that user can apply.
+```
+{UserId} -> {Best Job Ranking}
+0 -> 0 26 35  
+1 -> 12 25 32  
+2 -> 32 26 29  
+3 -> 8 37 27  
+4 -> 8 27  
+5 -> 26 29 32  
+6 -> 1 11  
+7 -> 13 19 26  
+8 -> 19 23 25  
+9 -> 13 12 4  
+10 -> 25 1  
+11 -> 8 37 16  
+12 -> 9 17 25  
+13 -> 17 25 13  
+14 -> 9 13 36  
+15 -> 1 11  
+16 -> 19  
+17 -> 19  
+18 -> 27  
+19 -> 8 38 15  
+20 -> 25 19 20  
+21 -> 25 19 20  
+22 -> 13 35 4  
+23 -> 17 0 28  
+24 -> 1 38 11  
+25 -> 9 0 13  
+26 -> 27  
+27 -> 19 37 8  
+28 -> 13 0 28  
+29 -> 25 37 8  
+30 -> 17 39 33  
+31 -> 27  
+32 -> 9 17 39  
+33 -> 8  
+34 -> 25 1 8  
+35 -> 9 13 32  
+36 -> 17 20 25  
+37 -> 0 32 22  
+38 -> 8 27 15  
+39 -> 8 16 27  
+40 -> 37 8 38  
+41 -> 26  
+42 -> 0 
+43 -> 0 
+44 -> 27  
+45 -> 19  
+46 -> 32 26  
+47 -> 9 13 7  
+48 -> 25 1 11  
+49 -> 38 10 34  
+
+```
