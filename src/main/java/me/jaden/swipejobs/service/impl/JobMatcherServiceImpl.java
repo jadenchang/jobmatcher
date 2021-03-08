@@ -23,17 +23,24 @@ public class JobMatcherServiceImpl implements JobMatcherService {
      * @throws Exception
      */
     @Override
-    public List<Job> matchJobFirstThree(Worker worker, Collection<Job> jobs) throws Exception {
-        Collection<Job> js = matchJobAll(worker, jobs);
-        List<Job> sortedJob = js.stream().sorted(Comparator.comparing(Job::getScore).reversed()).collect(Collectors.toList());
+    public List<Job> matchJobFirstThree(Worker worker, Collection<Job> jobs) throws NotFoundException {
+        List<Job> retVal = null;
+        try {
+            Collection<Job> allMatchedJobs = matchJobAll(worker, jobs);
 
-        //return first 3 if available
-        if(sortedJob.size()>0){
-            int size = sortedJob.size();
-            if(size>=3) size=3;
-            sortedJob = sortedJob.subList(0, size);
+            List<Job> sortedJob = allMatchedJobs.stream().sorted(Comparator.comparing(Job::getScore).reversed()).collect(Collectors.toList());
+
+            //return first 3 if available
+            int size = 0;
+            if( (size = sortedJob.size())>0){
+                if(size>=JOB_CAP) size=JOB_CAP;
+                retVal = sortedJob.subList(0, size);
+            }
+        }catch(NotFoundException e){
+            throw e;
         }
-        return sortedJob;
+
+        return retVal;
     }
 
     /**
@@ -49,7 +56,7 @@ public class JobMatcherServiceImpl implements JobMatcherService {
      * @throws Exception
      */
     @Override
-    public Collection<Job> matchJobAll(Worker worker, Collection<Job> jobs)throws Exception{
+    public Collection<Job> matchJobAll(Worker worker, Collection<Job> jobs)throws NotFoundException{
         if(worker==null) throw new NotFoundException();
 
         //1. jobTitle: Jobs <->  skill: Workers

@@ -1,5 +1,6 @@
 package me.jaden.swipejobs.service;
 
+import me.jaden.swipejobs.exception.NotFoundException;
 import me.jaden.swipejobs.po.Job;
 import me.jaden.swipejobs.po.Worker;
 
@@ -8,7 +9,9 @@ import java.util.List;
 
 public interface JobMatcherService {
 
-    List<Job> matchJobFirstThree(Worker worker, Collection<Job> jobs) throws Exception;
+    static final int JOB_CAP = 3;
 
-    Collection<Job> matchJobAll(Worker worker, Collection<Job> jobs) throws Exception;
+    List<Job> matchJobFirstThree(Worker worker, Collection<Job> jobs) throws NotFoundException;
+
+    Collection<Job> matchJobAll(Worker worker, Collection<Job> jobs) throws NotFoundException;
 }

@@ -34,6 +34,6 @@ public class JobMatcherServiceImplTest {
         Worker worker = workerService.findWorkerById(testWorkerId).orElse(null);
         List<Job> js = jobMatcherService.matchJobFirstThree(worker, jobs);
 
-        Assert.assertEquals(Optional.ofNullable(js.get(0).getJobId()),  expectedBestJob);
+        Assert.assertEquals(Optional.ofNullable(js.get(0).getJobId()).get().intValue(),  expectedBestJob.intValue());
     }
 }
